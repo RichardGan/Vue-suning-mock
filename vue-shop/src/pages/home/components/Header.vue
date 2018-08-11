@@ -8,17 +8,19 @@
       <span class="iconfont icon-select">&#xe632;</span>
       珠宝超品满399减200</div>
       <router-link to="/city">
-    <div class="header-right">武汉
+    <div class="header-right">
+      {{this.$store.state.city}}
       <span class="iconfont">&#xe64e;</span>
       </div>
       </router-link>
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>

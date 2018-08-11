@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="title">周末去哪</div>
+    <div class="title">暑假促销</div>
     <ul>
       <li class="item border-bottom" v-for="item of list" :key="item.id">
         <div class="item-img-wrapper">
