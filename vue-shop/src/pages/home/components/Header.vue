@@ -7,9 +7,11 @@
     <div class="header-input">
       <span class="iconfont icon-select">&#xe632;</span>
       珠宝超品满399减200</div>
+      <router-link to="/city">
     <div class="header-right">武汉
       <span class="iconfont">&#xe64e;</span>
       </div>
+      </router-link>
   </div>
 </template>
 <script>
@@ -55,6 +57,7 @@ export default {
       min-width: 1.04rem
       float: right
       text-align: center
+      color: #fff
       .arrow-icon
         margin-left: -0.4rem
         font-size: .24rem

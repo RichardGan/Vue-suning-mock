@@ -2,6 +2,7 @@
   <div>
     <div class="title">推荐页</div>
     <ul>
+      <!-- 把router-link渲染的a标签改成标签 -->
       <router-link tag="li"
       class="item border-bottom"
       v-for="item of list"

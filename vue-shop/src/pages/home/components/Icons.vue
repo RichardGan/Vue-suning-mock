@@ -1,6 +1,7 @@
 <template>
 <div class="icons">
   <swiper :options="swiperOption">
+    <!--用swiper来循环输出图标 -->
     <swiper-slide v-for="(page, index) of pages" :key="index">
     <div class="icon" v-for="item of page" :key="item.id">
       <div class="icon-img">
@@ -20,12 +21,14 @@ export default {
   },
   data () {
     return {
+    // 图标设置成不自动滚动
       swiperOption: {
         autoplay: false
       }
     }
   },
   computed: {
+  // 计算页数，在一页上若有9个图标，用pages代表页数，0-7用math.floor来取1，然后一个接一个把page推进pages里面
     pages () {
       const pages = []
       this.list.forEach((item, index) => {
