@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="search">
+      <!-- 设置keyword -->
       <input v-model="keyword" class="search-input" type="text" placeholder="输入城市名或拼音" />
     </div>
+    <!-- 让其搜出的值进行滚动 -->
     <div
       class="search-content"
       ref="search"
@@ -26,6 +28,7 @@
 </template>
 
 <script>
+
 import Bscroll from 'better-scroll'
 import { mapMutations } from 'vuex'
 export default {
@@ -35,27 +38,35 @@ export default {
   },
   data () {
     return {
+      // 设置keyword
       keyword: '',
       list: [],
       timer: null
     }
   },
   computed: {
+    // 没找到的话就不显示
     hasNoData () {
       return !this.list.length
     }
   },
+  // 监听传过来的keyword
   watch: {
     keyword () {
       if (this.timer) {
         clearTimeout(this.timer)
       }
+      // 删除数据或者没有数据时，显示空数据框
       if (!this.keyword) {
         this.list = []
         return
       }
       this.timer = setTimeout(() => {
+        // 定义result
         const result = []
+        // 在city主组件传过来的json中遍历，查找每一个值，若json中数据的spell和name相等
+        // 那么就把这个值push进result，然后传给list让他显示出来
+
         for (let i in this.cities) {
           this.cities[i].forEach((value) => {
             if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
@@ -68,6 +79,7 @@ export default {
     }
   },
   methods: {
+    // 点击city，跳转页面，这个是是在vuex里面定义的
     handleCityClick (city) {
       this.changeCity(city)
       this.$router.push('/')
